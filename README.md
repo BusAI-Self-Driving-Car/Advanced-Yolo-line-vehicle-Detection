@@ -39,7 +39,8 @@ Example:
 
 ## Video Output.  
 The Video output can be found [Here]( https://github.com/apreddyy/LaneandYolovehicle-Detection/blob/master/out.avi).  
-## Dependencies and Compiling.  
+## Dependencies and Compiling. 
+### Environment Windows 10.  
 1-	Visual Studio 2015.  
 2-	CUDA 9.0. For Windows installation Guide and Requirements [Here]( https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#install-cuda-software).   
 3-	TBB . For more information and installation [Here]( https://software.intel.com/en-us/intel-tbb).   
@@ -48,14 +49,14 @@ The Video output can be found [Here]( https://github.com/apreddyy/LaneandYoloveh
 6-	Tensorflow trained model (graph-vehicledetection.pb) is included in repository.  
 7-            Eigen Library.  
 ## Tensorflow Static Build.
-## Clone Tensorflow.  
+### Clone Tensorflow.  
 git clone https://github.com/tensorflow/tensorflow.git v1.7.0  
 cd v1.7.0  
 git checkout tags/v1.7.0  
 cd tensorflow\contrib\cmake  
 mkdir build  
 cd build  
-## Build Tensorflow  
+### Build Tensorflow  
  Drive:\tensorflow\tensorflow\contrib\cmake .. -A x64 -DCMAKE_BUILD_TYPE=Release ^  
 -DSWIG_EXECUTABLE=H:\Swig\swigwin-3.0.12\swig.exe ^  
 -DPYTHON_EXECUTABLE=H:\PythonInstall\envs\env_full\python.exe ^  
