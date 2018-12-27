@@ -14,7 +14,15 @@
 
 using namespace std;
 
-
+//#####################################################################################//
+//#####################################################################################//
+//#####################################################################################//
+//# Copyright For polyfiteigen:                                                        //
+//  Copyright (C) 2014  RIEGL Research ForschungsGmbH                                  //
+//  Copyright(C) 2014  Clifford Wolf <clifford@clifford.at>							   //
+//#####################################################################################//
+//#####################################################################################//
+//#####################################################################################//
 vector<float>LANEDETECTION::polyfiteigen(const vector<float> &xv, const vector<float> &yv, int order)
 {
 	Eigen::initParallel();
@@ -39,7 +47,7 @@ vector<float>LANEDETECTION::polyfiteigen(const vector<float> &xv, const vector<f
 
 	return coeff;
 }
-
+//                       # Copyright For polyfiteigen: END                          //
 
 
 vector<float>LANEDETECTION::polyvaleigen(const vector<float>& oCoeff,

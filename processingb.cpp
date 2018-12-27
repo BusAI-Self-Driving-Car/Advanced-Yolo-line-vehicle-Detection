@@ -72,9 +72,6 @@ void LANEDETECTION::processingb_frame(Mat& frame, cuda::GpuMat& src, cuda::GpuMa
 	vector<Point2i> nonZeroCoordinates;
 	vector<float>polyleft_in;
 	vector<float>polyright_in;
-	float center_dist;
-	float left_curverad;
-	float right_curverad;
 	vector<int>Leftx;
 	vector<int>rightx;
 	vector<int>main_y;
@@ -82,8 +79,8 @@ void LANEDETECTION::processingb_frame(Mat& frame, cuda::GpuMat& src, cuda::GpuMa
 	cuda_frameout.upload(frame);
 	LANEDETECTION::erode_dilate(cuda_frameout, dilate_out);
 	LANEDETECTION::video_frame(dilate_out, polyleft_in, polyright_in);
-	LANEDETECTION::curvature_sanity_check(polyleft_in, polyright_in, center_dist,  left_curverad,  right_curverad, Leftx, rightx, main_y);
-	cout << center_dist <<endl;
+	LANEDETECTION::curvature_sanity_check(polyleft_in, polyright_in, Leftx, rightx, main_y);
+	
 	Mat maskImage = Mat(frame.size(), CV_8UC3, Scalar(0));
 	vector<Point2i>PointLeft;
 	vector<Point2i>PointRight;

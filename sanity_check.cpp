@@ -43,7 +43,7 @@ vector<float>LinearSpacedArray(float a, float b, size_t N)
 	return xs;
 }
 
-void LANEDETECTION::curvature_sanity_check(vector<float>&polyleft_in, vector<float>&polyright_in, float &center_dist, float &left_curverad, float &right_curverad, vector<int>&Leftx, vector<int>&rightx, vector<int>&main_y)
+void LANEDETECTION::curvature_sanity_check(vector<float>&polyleft_in, vector<float>&polyright_in, vector<int>&Leftx, vector<int>&rightx, vector<int>&main_y)
 {
 	float xm_per_pix = 3.7f / 350.0f;
 	float ym_per_pix = 30.0f / 360.0f;
@@ -114,7 +114,7 @@ void LANEDETECTION::curvature_sanity_check(vector<float>&polyleft_in, vector<flo
 
 	float center_x = center_point(first_element_L, first_element_R);
 	float center_ix = 320;
-	center_dist = (distance(center_x, center_ix)*xm_per_pix);
+	LANEDETECTION::center_dist = (distance(center_x, center_ix)*xm_per_pix);
 	//cout << center_dist <<endl;
 	tbb::tbb_thread th1([&Leftx_out, &xm_per_pix]()
 	{
@@ -143,20 +143,20 @@ void LANEDETECTION::curvature_sanity_check(vector<float>&polyleft_in, vector<flo
 	vector<float>left_fit_cr;
 	vector<float>right_fit_cr;
 
-	tbb::tbb_thread thA([&Plot_ys, &Leftx_out, &left_fit_cr, &left_curverad, &ym_per_pix, &polyfitpolyval]()
-	{
-		left_fit_cr = polyfitpolyval.polyfiteigen(Plot_ys, Leftx_out, 2);
-		left_curverad = float((1 + pow(pow((2 * left_fit_cr[2] * 359 * ym_per_pix + left_fit_cr[1]), 2), 1.5)) / abs(2 * left_fit_cr[2]));
-	});
+	//tbb::tbb_thread thA([&Plot_ys, &Leftx_out, &left_fit_cr, &left_curverad, &ym_per_pix, &polyfitpolyval]()
+	//{
+	left_fit_cr = polyfitpolyval.polyfiteigen(Plot_ys, Leftx_out, 2);
+	LANEDETECTION::left_curverad = float((1 + pow(pow((2 * left_fit_cr[2] * 359 * ym_per_pix + left_fit_cr[1]), 2), 1.5)) / abs(2 * left_fit_cr[2]));
+	//});
 
-	tbb::tbb_thread thB([&Plot_ys, &rightx_out, &right_fit_cr, &right_curverad, &ym_per_pix, &polyfitpolyval]()
-	{
-		right_fit_cr = polyfitpolyval.polyfiteigen(Plot_ys, rightx_out, 2);
-		right_curverad = float((1 + pow(pow((2 * right_fit_cr[2] * 359 * ym_per_pix + right_fit_cr[1]), 2), 1.5)) / abs(2 * right_fit_cr[2]));
-	});
+	//tbb::tbb_thread thB([&Plot_ys, &rightx_out, &right_fit_cr, &right_curverad, &ym_per_pix, &polyfitpolyval]()
+	//{
+	right_fit_cr = polyfitpolyval.polyfiteigen(Plot_ys, rightx_out, 2);
+	LANEDETECTION::right_curverad = float((1 + pow(pow((2 * right_fit_cr[2] * 359 * ym_per_pix + right_fit_cr[1]), 2), 1.5)) / abs(2 * right_fit_cr[2]));
+//});
 
-	thA.join();
-	thB.join();
+	//thA.join();
+	//thB.join();
 
 	rightx.insert(rightx.end(), rightx_out_m.begin(), rightx_out_m.end());
 	Leftx.insert(Leftx.end(), Leftx_out_m.begin(), Leftx_out_m.end());
