@@ -1,4 +1,11 @@
-# Advanced Lane Finding Project and Yolo Objection Detection.     
+# Advanced Lane Finding Project and Yolo Objection Detection.   
+## Tabel of Content
+1 - [Algorithm Details](#algorithm-details).  
+2 - [YOLO Object Detection](#yolo-object-detection).  
+3 - [Video Output](#video-output).  
+4 - [Dependencies and Compiling](#dependencies-and-compiling).  
+5 - [Tensorflow Static Build](#tensorflow-static-build).   
+## Algorithm Details.     
 ### Distortion corrected calibration image.   
 The code for this step is contained in the calibration.cpp [Here](../LaneandYolovehicle-Detection/calibration.cpp).  
 Start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here we are assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image. Thus, objp is just a replicated array of coordinates, and objpoints will be appended with a copy of it every time I successfully detect all chessboard corners in a test image. imgpoints will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection. Then use the output objpoints and imgpoints to compute the camera calibration and distortion coefficients using the calibrateCamera() function.  
@@ -36,11 +43,11 @@ The Video output can be found [Here]( https://github.com/apreddyy/LaneandYoloveh
 1-	Visual Studio 2015.  
 2-	CUDA 9.0. For Windows installation Guide and Requirements [Here]( https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#install-cuda-software).   
 3-	TBB . For more information and installation [Here]( https://software.intel.com/en-us/intel-tbb).   
-4-	Tensorflow 1.7.0. For Building a static Tensorflow C++ library on Windows [Here]( https://joe-antognini.github.io/machine-learning/build-windows-tf) and in section [Here](#tensorflow-static-build).    
+4-	Tensorflow 1.7.0. For Building a static Tensorflow C++ library on Windows [Here]( https://joe-antognini.github.io/machine-learning/build-windows-tf) and in [Section](#tensorflow-static-build).    
 5-	OpenCV 3.4 or Greater. More information can be found [Here]( https://jamesbowley.co.uk/build-compile-opencv-3-4-in-windows-with-cuda-9-0-and-intel-mkl-tbb/).    
 6-	Tensorflow trained model (graph-vehicledetection.pb) is included in repository.  
 7-            Eigen Library.  
-# Tensorflow Static Build.
+## Tensorflow Static Build.
 ## Clone Tensorflow.  
 git clone https://github.com/tensorflow/tensorflow.git v1.7.0  
 cd v1.7.0  
