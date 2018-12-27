@@ -1,7 +1,7 @@
 # Advanced Lane Finding Project and Yolo Objection Detection.     
 ### Distortion corrected calibration image.   
 The code for this step is contained in the calibration.cpp [Here](../LaneandYolovehicle-Detection/calibration.cpp).  
-Start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here we are assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image. Thus, objp is just a replicated array of coordinates, and objpoints will be appended with a copy of it every time. Successfully detect all chessboard corners in a test image. Imgpoints will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection. Then use the output objpoints and imgpoints to compute the camera calibration and distortion coefficients using the calibrateCamera() function.  
+Start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here we are assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image. Thus, objp is just a replicated array of coordinates, and objpoints will be appended with a copy of it every time I successfully detect all chessboard corners in a test image. imgpoints will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection. Then use the output objpoints and imgpoints to compute the camera calibration and distortion coefficients using the calibrateCamera() function.  
 Example:   
 ![alt text]( images/image1.png)    
 #### Pipeline.   
@@ -31,15 +31,34 @@ Example:
 ![alt text]( images/image5.png)    
 
 ## Video Output.  
-The Vidoe output can be found [Here]( https://github.com/apreddyy/LaneandYolovehicle-Detection/blob/master/out.avi).  
+The Video output can be found [Here]( https://github.com/apreddyy/LaneandYolovehicle-Detection/blob/master/out.avi).  
 ## Dependencies and Compiling.  
 1-	Visual Studio 2015.  
 2-	CUDA 9.0. For Windows installation Guide and Requirements [Here]( https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#install-cuda-software).   
 3-	TBB . For more information and installation [Here]( https://software.intel.com/en-us/intel-tbb).   
-4-	Tensorflow 1.7.0. For Building a static Tensorflow C++ library on Windows [Here]( https://joe-antognini.github.io/machine-learning/build-windows-tf) and [Here]( https://medium.com/@shiweili/building-tensorflow-c-shared-library-on-windows-e79c90e23e6e).    
+4-	Tensorflow 1.7.0. For Building a static Tensorflow C++ library on Windows [Here]( https://joe-antognini.github.io/machine-learning/build-windows-tf) and in section [Here](#tensorflow-static-build).    
 5-	OpenCV 3.4 or Greater. More information can be found [Here]( https://jamesbowley.co.uk/build-compile-opencv-3-4-in-windows-with-cuda-9-0-and-intel-mkl-tbb/).    
 6-	Tensorflow trained model (graph-vehicledetection.pb) is included in repository.  
-7-  Eigen Library.  
-
+7-            Eigen Library.  
+# Tensorflow Static Build.
+## Clone Tensorflow.  
+git clone https://github.com/tensorflow/tensorflow.git v1.7.0  
+cd v1.7.0  
+git checkout tags/v1.7.0  
+cd tensorflow\contrib\cmake  
+mkdir build  
+cd build  
+## Build Tensorflow  
+ Drive:\tensorflow\tensorflow\contrib\cmake .. -A x64 -DCMAKE_BUILD_TYPE=Release ^  
+-DSWIG_EXECUTABLE=H:\Swig\swigwin-3.0.12\swig.exe ^  
+-DPYTHON_EXECUTABLE=H:\PythonInstall\envs\env_full\python.exe ^  
+-DPYTHON_LIBRARIES=H:\PythonInstall\envs\env_full\libs\python35.lib ^  
+-Dtensorflow_ENABLE_GPU=ON ^  
+-DCUDNN_HOME="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0" ^  
+-Dtensorflow_BUILD_PYTHON_BINDINGS=OFF ^  
+-Dtensorflow_ENABLE_GRPC_SUPPORT=OFF ^  
+-Dtensorflow_BUILD_SHARED_LIB=ON ^  
+-Dtensorflow_WIN_CPU_SIMD_OPTIONS=/arch:AVX ^  
+-DCUDA_HOST_COMPILER="C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/amd64/cl.exe"  
+-Dtensorflow_WIN_CPU_SIMD_OPTIONS=/arch:AVX  
 # Thanks
-
