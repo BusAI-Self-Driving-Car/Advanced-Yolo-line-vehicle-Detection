@@ -58,9 +58,9 @@ mkdir build
 cd build  
 ### Build Tensorflow  
  Drive:\tensorflow\tensorflow\contrib\cmake .. -A x64 -DCMAKE_BUILD_TYPE=Release ^  
--DSWIG_EXECUTABLE=H:\Swig\swigwin-3.0.12\swig.exe ^  
--DPYTHON_EXECUTABLE=H:\PythonInstall\envs\env_full\python.exe ^  
--DPYTHON_LIBRARIES=H:\PythonInstall\envs\env_full\libs\python35.lib ^  
+-DSWIG_EXECUTABLE=DRIVE:\PATH-To\Swig\swigwin-3.0.12\swig.exe ^  
+-DPYTHON_EXECUTABLE=DRIVE:\Path-To\python.exe ^  
+-DPYTHON_LIBRARIES=DRIVE:\Path-To\libs\python35.lib ^  
 -Dtensorflow_ENABLE_GPU=ON ^  
 -DCUDNN_HOME="C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0" ^  
 -Dtensorflow_BUILD_PYTHON_BINDINGS=OFF ^  
