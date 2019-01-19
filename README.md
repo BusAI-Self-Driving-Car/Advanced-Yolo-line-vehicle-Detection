@@ -88,4 +88,6 @@ cd build
 -Dtensorflow_WIN_CPU_SIMD_OPTIONS=/arch:AVX ^  
 -DCUDA_HOST_COMPILER="C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/amd64/cl.exe"  
 -Dtensorflow_WIN_CPU_SIMD_OPTIONS=/arch:AVX  
+
+For Linux Version [Here](https://github.com/apreddyy/LaneandYolovehicle-DetectionLinux)  
 # Thanks
